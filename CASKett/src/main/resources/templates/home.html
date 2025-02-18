@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<h1>Speech to Text Converter</h1>
+    
+    <button id="startRecord">Start Listening</button>
+    <button id="stopRecord" disabled>Stop</button>
+
+    <h2>Recognized Text:</h2>
+    <p id="outputText"></p>
+
+    <script>
+        let recognition;
+        
+        if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
+            recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+            recognition.continuous = false;
+            recognition.interimResults = false;
+            recognition.lang = 'en-US';
+
+            recognition.onstart = () => {
+                document.getElementById("outputText").innerText = "Listening...";
+                document.getElementById("startRecord").disabled = true;
+                document.getElementById("stopRecord").disabled = false;
+            };
+
+            recognition.onresult = (event) => {
+                const transcript = event.results[0][0].transcript;
+                document.getElementById("outputText").innerText = transcript;
+                
+                // Send data to backend (Optional)
+                fetch('/save-text', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ text: transcript })
+                });
+            };
+
+            recognition.onerror = (event) => {
+                document.getElementById("outputText").innerText = "Error occurred: " + event.error;
+            };
+
+            recognition.onend = () => {
+                document.getElementById("startRecord").disabled = false;
+                document.getElementById("stopRecord").disabled = true;
+            };
+
+            document.getElementById("startRecord").addEventListener("click", () => recognition.start());
+            document.getElementById("stopRecord").addEventListener("click", () => recognition.stop());
+        } else {
+            alert("Speech Recognition is not supported in this browser.");
+        }
+    </script>
+</body>
+</html>
+
+
+
