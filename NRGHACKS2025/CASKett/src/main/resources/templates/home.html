@@ -50,6 +50,7 @@
       <script>
         let recognition;
 
+        // Check if the browser supports Speech Recognition
         if (
           "SpeechRecognition" in window ||
           "webkitSpeechRecognition" in window
@@ -60,12 +61,14 @@
           recognition.interimResults = false;
           recognition.lang = "en-US";
 
+           // Event triggered when speech recognition starts
           recognition.onstart = () => {
             document.getElementById("outputText").innerText = "Listening...";
             document.getElementById("startRecord").disabled = true;
             document.getElementById("stopRecord").disabled = false;
           };
 
+          // Event triggered when speech recognition detects speech and returns results
           recognition.onresult = (event) => {
             const transcript = event.results[0][0].transcript;
             document.getElementById("outputText").innerText = transcript;
@@ -115,6 +118,7 @@
           synth.speak(utterance);
         }
 
+        // Event listener for the "Speak Brainrot" button
         document
           .getElementById("speakBrainrot")
           .addEventListener("click", () => {
