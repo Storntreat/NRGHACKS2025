@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="home.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script>
+      // This function will replace brainrot terms with their english direct translation
+      function replaceText() {
+          var inputText = document.getElementById("textInput").value;
+          // Replace all occurrences of "sigma" (case-insensitive)
+          inputText = inputText.replace(/\bsigma\b/gi, 'leader');
+          inputText = inputText.replace(/\bi c l t s p m o\b/gi, 'Honestly, this s*** is pissing me off');
+          inputText = inputText.replace(/\bedge\b/gi, 'gatekeep');
+          inputText = inputText.replace(/\bicl\b/gi, 'honestly');
+          inputText = inputText.replace(/\bts\b/gi, 'this s***');
+          inputText = inputText.replace(/\bpmo\b/gi, 'piss me off');
+          inputText = inputText.replace(/\bboi\b/gi, 'boy');
+          inputText = inputText.replace(/\bskibidi\b/gi, 'amazing');
+          inputText = inputText.replace(/\bedging\b/gi, 'gatekeeping');
+          inputText = inputText.replace(/\bsigma\b/gi, 'bad guy');
+          inputText = inputText.replace(/\bgyatt\b/gi, 'ass');
+          inputText = inputText.replace(/\bohio\b/gi, 'hell');
+          inputText = inputText.replace(/\bsigma\b/gi, 'bad guy');
+          inputText = inputText.replace(/\bfanum tax\b/gi, 'stealing');
+          inputText = inputText.replace(/\bfanum taxed\b/gi, 'stole');
+          inputText = inputText.replace(/\bngl\b/gi, 'to be honest');
+          inputText = inputText.replace(/\bskibidiest\b/gi, 'most amazing');
+          inputText = inputText.replace(/\bratio\b/gi, 'get owned');
+          inputText = inputText.replace(/\brizz\b/gi, 'charisma');
+          inputText = inputText.replace(/\brizzed\b/gi, 'charmed');
+          inputText = inputText.replace(/\bsus\b/gi, 'oddly suspicious');
+          inputText = inputText.replace(/\bsussy\b/gi, 'oddly suspicious');
+          inputText = inputText.replace(/\bsussy baka\b/gi, 'cheeky individual');
+          inputText = inputText.replace(/\braise your ya ya ya\b/gi, 'bring your A-game');
+          inputText = inputText.replace(/\braise your yay\b/gi, 'bring your A-game');
+          inputText = inputText.replace(/\braise your ya\b/gi, 'bring your A-game');
+          inputText = inputText.replace(/\braise your yaya\b/gi, 'bring your A-game');
+          inputText = inputText.replace(/\bress\b/gi, 'bring your A-game');
+          inputText = inputText.replace(/\brezz\b/gi, 'bring your A-game');
+          inputText = inputText.replace(/\breise\b/gi, 'bring your A-game');
+          // Update the value of the second text box with the replaced text
+          document.getElementById("translatedText").value = inputText;
+      }
+
+      function replaceTextVoice(inputText) {
+          // replaces terms for voice
+          inputText = inputText.replace(/\bsigma\b/gi, 'leader');
+          inputText = inputText.replace(/\bi c l t s p m o\b/gi, 'Honestly, this s*** is pissing me off');
+          inputText = inputText.replace(/\bedge\b/gi, 'gatekeep');
+          inputText = inputText.replace(/\bicl\b/gi, 'honestly');
+          inputText = inputText.replace(/\bts\b/gi, 'this s***');
+          inputText = inputText.replace(/\bpmo\b/gi, 'piss me off');
+          inputText = inputText.replace(/\bboi\b/gi, 'boy');
+          inputText = inputText.replace(/\bskibidi\b/gi, 'amazing');
+          inputText = inputText.replace(/\bedging\b/gi, 'gatekeeping');
+          inputText = inputText.replace(/\bsigma\b/gi, 'bad guy');
+          inputText = inputText.replace(/\bgyatt\b/gi, 'ass');
+          inputText = inputText.replace(/\bohio\b/gi, 'hell');
+          inputText = inputText.replace(/\bsigma\b/gi, 'bad guy');
+          inputText = inputText.replace(/\bfanum tax\b/gi, 'stealing');
+          inputText = inputText.replace(/\bfanum taxed\b/gi, 'stole');
+          inputText = inputText.replace(/\bngl\b/gi, 'to be honest');
+          inputText = inputText.replace(/\bskibidiest\b/gi, 'most amazing');
+          inputText = inputText.replace(/\bratio\b/gi, 'get owned');
+          inputText = inputText.replace(/\brizz\b/gi, 'charisma');
+          inputText = inputText.replace(/\brizzed\b/gi, 'charmed');
+          inputText = inputText.replace(/\bsus\b/gi, 'oddly suspicious');
+          inputText = inputText.replace(/\bsussy\b/gi, 'oddly suspicious');
+          inputText = inputText.replace(/\bsussy baka\b/gi, 'cheeky individual');
+          inputText = inputText.replace(/\braise your yeah yeah yeah\b/gi, 'bring your A-game');
+          inputText = inputText.replace(/\braise your yeah\b/gi, 'bring your A-game');
+          inputText = inputText.replace(/\braise your yeah\b/gi, 'bring your A-game');
+          inputText = inputText.replace(/\braise your yay\b/gi, 'bring your A-game');
+          inputText = inputText.replace(/\bress\b/gi, 'bring your A-game');
+          inputText = inputText.replace(/\brezz\b/gi, 'bring your A-game');
+          inputText = inputText.replace(/\breise\b/gi, 'bring your A-game');
+          inputText = inputText.replace(/\bi c l t s p m o\b/gi, 'to be honest this sh** pisses me off');
+          inputText = inputText.replace(/\bi c l t s p m\b/gi, 'to be honest this sh** pisses me off');
+          inputText = inputText.replace(/\bicl TSP\b/gi, 'to be honest this sh** pisses me off');
+          inputText = inputText.replace(/\bICL tsp\b/gi, 'to be honest this sh** pisses me off');
+          inputText = inputText.replace(/\bskid\b/gi, 'amazing');
+          inputText = inputText.replace(/\byou are so stupid\b/gi, 'you are so amazing');
+          inputText = inputText.replace(/\bskinniest\b/gi, 'most amazing');
+          inputText = inputText.replace(/\bskinny\b/gi, 'amazing');
+          inputText = inputText.replace(/\bicl\b/gi, 'to be honest');
+          // Update the value of the second text box with the replaced text
+          return inputText;
+      }
+    </script>
+
+
+
+  </head>
+  <body>
+    <!-- header -->
+    <div class="headDiv">
+        <h1 class="header">CASKKett</h1>
+        <h1 class="subheader">Brainrot Speech to Text Converter</h1>
+    </div>
+    <div class="bodyDiv">
+      <h1>Brainrot to English Language Translator</h1>
+
+      <!-- typing version -->
+
+      <form>
+        <h2>Typing:</h2>
+        <textarea id="textInput" class="input" placeholder="Begin typing text in Brainrot to convert to proper English." oninput="replaceText()"></textarea>
+      </form>
+      <h2>Translation:</h2>
+      <textarea id="translatedText" class="output" placeholder="Fully translated text will appear here." readonly></textarea>
+
+
+      <!-- recording / audio version -->
+      <h2>Recording:</h2>
+      <button id="startRecord" class="recordButton">🎤 Start Recording</button>
+      <button id="stopRecord" class="stopButton" disabled>⏹️ Stop</button>
+
+      <h2>Recorded Brainrot Speech:</h2>
+    <textarea id="testText" class="output" placeholder="Raw speech-to-text will appear here." readonly></textarea>
+
+    <h2>Translated Speech:</h2>
+    <textarea id="outputText" class="output" placeholder="Translated speech will appear here." readonly></textarea>
+
+
+      <script>
+        let recognition;
+
+        if (
+          "SpeechRecognition" in window ||
+          "webkitSpeechRecognition" in window
+        ) {
+          recognition = new (window.SpeechRecognition ||
+            window.webkitSpeechRecognition)();
+          recognition.continuous = false;
+          recognition.interimResults = false;
+          recognition.lang = "en-US";
+
+          recognition.onstart = () => {
+            document.getElementById("outputText").innerText = "Listening...";
+            document.getElementById("testText").innerText = "Listening...";
+            document.getElementById("startRecord").disabled = true;
+            document.getElementById("stopRecord").disabled = false;
+          };
+
+          recognition.onresult = (event) => {
+            const originalTranscript = event.results[0][0].transcript;
+          
+            const translatedTranscript = replaceTextVoice(event.results[0][0].transcript);
+
+            document.getElementById("testText").innerText = originalTranscript;
+            document.getElementById("outputText").innerText = translatedTranscript;
+           
+          };
+
+          recognition.onend = () => {
+            document.getElementById("startRecord").disabled = false;
+            document.getElementById("stopRecord").disabled = true;
+          };
+
+          document
+            .getElementById("startRecord")
+            .addEventListener("click", () => recognition.start());
+          document
+            .getElementById("stopRecord")
+            .addEventListener("click", () => recognition.stop());
+        } else {
+          alert("Speech Recognition is not supported in this browser.");
+        }
+
+        // Text-to-Speech (Brainrot voice output)
+        function speak(text) {
+          const synth = window.speechSynthesis;
+          let utterance = new SpeechSynthesisUtterance(text);
+          utterance.lang = "en-US";
+
+          // Optional: Pick a meme-like voice
+          let voices = synth.getVoices();
+          utterance.voice =
+            voices.find((voice) =>
+              voice.name.includes("Google UK English Male")
+            ) || voices[0];
+
+          synth.speak(utterance);
+        }
+
+        document
+          .getElementById("speakBrainrot")
+          .addEventListener("click", () => {
+            let text = document.getElementById("brainrotText").innerText;
+            if (text) {
+              speak(text);
+            } else {
+              alert("No text to speak!");
+            }
+          });
+      </script>
+    </div>
+  </body>
+</html>

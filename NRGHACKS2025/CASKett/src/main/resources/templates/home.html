@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="home.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script>
+      // This function will replace "sigma" with "hi" as the user types
+      function replaceText() {
+          var inputText = document.getElementById("textInput").value;
+          // Replace all occurrences of "sigma" (case-insensitive)
+          inputText = inputText.replace(/\bsigma\b/gi, 'bad guy');
+          inputText = inputText.replace(/\bicl ts pmo\b/gi, 'Honestly, [t]');
+          // Update the value of the second text box with the replaced text
+          document.getElementById("translatedText").value = inputText;
+      }
+    </script>
+
+
+  </head>
+  <body>
+    <div class="headDiv">
+        <h1 class="header">CASKKett</h1>
+        <h1 class="subheader">Brainrot Speech to Text Converter</h1>
+    </div>
+    <div class="bodyDiv">
+      <h1>Brainrot to English Language Translator</h1>
+      <form>
+        <label for="textInput" class="inputTitle">Typing:</label><br>
+        <textarea id="textInput" class="input" placeholder="Begin typing text in Brainrot to convert to proper English." oninput="replaceText()"></textarea><br><br>
+        
+        <label for="translatedText">Translated text:</label><br>
+        <textarea id="translatedText" class="output" readonly></textarea><br><br>
+      </form>
+
+
+      <br>
+      <h2>Recording:</h2>
+      <button id="startRecord">🎤 Start Recording</button>
+      <button id="stopRecord" disabled>⏹️ Stop</button>
+      <button id="speakBrainrot" disabled>🔊 Speak Brainrot</button>
+
+      <p id="outputText">...</p>
+
+      <h2>Translation:</h2>
+      <p id="brainrotText">...</p>
+
+      <script>
+        let recognition;
+
+        if (
+          "SpeechRecognition" in window ||
+          "webkitSpeechRecognition" in window
+        ) {
+          recognition = new (window.SpeechRecognition ||
+            window.webkitSpeechRecognition)();
+          recognition.continuous = false;
+          recognition.interimResults = false;
+          recognition.lang = "en-US";
+
+          recognition.onstart = () => {
+            document.getElementById("outputText").innerText = "Listening...";
+            document.getElementById("startRecord").disabled = true;
+            document.getElementById("stopRecord").disabled = false;
+          };
+
+          recognition.onresult = (event) => {
+            const transcript = event.results[0][0].transcript;
+            document.getElementById("outputText").innerText = transcript;
+
+            // Send English text to backend for Brainrot conversion
+            fetch("/convert-to-brainrot", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ text: transcript }),
+            })
+              .then((response) => response.json())
+              .then((data) => {
+                document.getElementById("brainrotText").innerText =
+                  data.brainrot;
+                document.getElementById("speakBrainrot").disabled = false;
+              });
+          };
+
+          recognition.onend = () => {
+            document.getElementById("startRecord").disabled = false;
+            document.getElementById("stopRecord").disabled = true;
+          };
+
+          document
+            .getElementById("startRecord")
+            .addEventListener("click", () => recognition.start());
+          document
+            .getElementById("stopRecord")
+            .addEventListener("click", () => recognition.stop());
+        } else {
+          alert("Speech Recognition is not supported in this browser.");
+        }
+
+        // Text-to-Speech (Brainrot voice output)
+        function speak(text) {
+          const synth = window.speechSynthesis;
+          let utterance = new SpeechSynthesisUtterance(text);
+          utterance.lang = "en-US";
+
+          // Optional: Pick a meme-like voice
+          let voices = synth.getVoices();
+          utterance.voice =
+            voices.find((voice) =>
+              voice.name.includes("Google UK English Male")
+            ) || voices[0];
+
+          synth.speak(utterance);
+        }
+
+        document
+          .getElementById("speakBrainrot")
+          .addEventListener("click", () => {
+            let text = document.getElementById("brainrotText").innerText;
+            if (text) {
+              speak(text);
+            } else {
+              alert("No text to speak!");
+            }
+          });
+      </script>
+    </div>
+
+    <div>
+      <script>
+        function uploadFile() {
+          let formData = new FormData();
+          let fileInput = document.getElementById("audioFile");
+          formData.append("file", fileInput.files[0]);
+
+          fetch("/api/speech/transcribe", {
+            method: "POST",
+            body: formData,
+          })
+            .then((response) => response.text())
+            .then((data) => {
+              document.getElementById("outputText").innerText =
+                "Transcribed Text: " + data;
+            })
+            .catch((error) => console.error("Error:", error));
+        }
+      </script>
+    </div>
+  </body>
+</html>
